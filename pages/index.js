@@ -41,7 +41,7 @@ export default function Home() {
         <link rel="manifest" href="/manifest.json" />
       </Head>
       
-      { user === "unknown" || user === "Daily"  && <div className="p-4">
+      { user === "unknown"  && <div className="p-4">
         <h1 className={styles.title}> UPgrade | {user} </h1>
         <p>
             The purpose of this app is for you to give daily feedback on all of your
@@ -64,7 +64,7 @@ export default function Home() {
       { user !== "unknown" && <div className="p-4">
           <section className='container-for-mobile'>
 
-            <UserID />
+            { user !== "unknown" && <UserID />}
             
             <h3> {user} | { info && info.results.length } </h3>
             <div className='container-for-abstract'> 

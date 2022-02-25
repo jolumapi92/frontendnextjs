@@ -36,7 +36,7 @@ const NavbarForApp = () => {
         socket.on("disconnect", () => {
         setOnline("Offline");
         setTitle("Daily");
-        dispatch( login("Daily") );
+        dispatch( login("unknown") );
         console.log("Succesfully disconnectedof the socket");
         })
         
@@ -61,7 +61,7 @@ const NavbarForApp = () => {
         clearDatabase();
         window.localStorage.removeItem('Auth');
         setAuth(null);
-        dispatch( logout("Daily") );
+        dispatch( logout("unknown") );
         router.push('/');
     }
 
