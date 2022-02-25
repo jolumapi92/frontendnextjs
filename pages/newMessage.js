@@ -16,13 +16,23 @@ const CreateNewMessage = () => {
         let db;
         request.onerror = function(event) {
             console.log("Encounter an error inside the DB");
-          };
+        }
         request.onsuccess = function(event) {
             db = request.result;
             const transaction = db.transaction('messages', 'readwrite');
             const store = transaction.objectStore('messages');
             store.put({ message: messageUser, time: Date.now()})
-        };
+        }
+        request.onupgradeneeded = function(event) {
+            // Save the IDBDatabase interface
+            const db = event.target.result;
+            db.onerror = (event) => {
+            console.log("This has been a mistake", event)
+            }
+            // Create an objectStore for this database
+            const store = db.createObjectStore("messages", { autoIncrement : true });
+            console.log(event, store)
+        }
     }
 
     return ( 
