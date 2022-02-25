@@ -41,8 +41,8 @@ export default function Home() {
         <link rel="manifest" href="/manifest.json" />
       </Head>
       
-      { user === "unknown" && <div className="p-4">
-        <h1 className={styles.title}> UPgrade | Frontend </h1>
+      { user === "unknown" || user === "Daily"  && <div className="p-4">
+        <h1 className={styles.title}> UPgrade | {user} </h1>
         <p>
             The purpose of this app is for you to give daily feedback on all of your
             projects and daily advancements. Use it wisely and enjoy it. This app was created for you guys!
@@ -66,7 +66,7 @@ export default function Home() {
 
             <UserID />
             
-            <h3> NY Times | { info && info.results.length } </h3>
+            <h3> {user} | { info && info.results.length } </h3>
             <div className='container-for-abstract'> 
               { info && <p className='m-0'> {  info.results[1].abstract  } </p>  }
               <h6 className='header-for-conatiner'>Abstract</h6>
