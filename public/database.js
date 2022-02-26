@@ -17,7 +17,7 @@ function databaseCreation () {
     // Create an objectStore for this database
     const store = db.createObjectStore("messages", { autoIncrement : true });
     console.log(event, store)
-    };
+    }
 }
 
 export { databaseCreation }

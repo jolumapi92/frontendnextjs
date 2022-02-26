@@ -14,6 +14,16 @@ self.onmessage = () => {
         request.onerror = (e) => {
             console.log(e)
         }
+        request.onupgradeneeded = function(event) {
+            // Save the IDBDatabase interface
+            db = event.target.result;
+            db.onerror = (event) => {
+            console.log("This has been a mistake", event)
+            }
+            // Create an objectStore for this database
+            const store = db.createObjectStore("messages", { autoIncrement : true });
+            console.log(event, store)
+        }
     
     function call (payload) {
         self.postMessage(payload);
